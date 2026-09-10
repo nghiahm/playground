@@ -40,14 +40,14 @@ function CustomMonthCaption({ calendarMonth, ...props }: MonthCaptionProps) {
     <div {...props}>
       <button
         type="button"
-        className="btn btn-default btn-sm pull-left"
+        className="btn btn-default btn-sm pull-left uib-left"
         onClick={() => previousMonth && goToMonth(previousMonth)}
         disabled={!previousMonth}
         aria-label="Previous month"
       >
         <i className="glyphicon glyphicon-chevron-left" aria-hidden="true" />
       </button>
-      <button type="button" className="btn btn-default btn-sm">
+      <button type="button" className="btn btn-default btn-sm uib-title">
         <strong>
           {calendarMonth.date.toLocaleDateString("en-US", {
             month: "long",
@@ -58,7 +58,7 @@ function CustomMonthCaption({ calendarMonth, ...props }: MonthCaptionProps) {
 
       <button
         type="button"
-        className="btn btn-default btn-sm pull-right"
+        className="btn btn-default btn-sm pull-right uib-right"
         onClick={() => nextMonth && goToMonth(nextMonth)}
         disabled={!nextMonth}
         aria-label="Next month"
@@ -90,7 +90,10 @@ export function DatePickerDayView() {
         setMonth(date);
       }}
       classNames={{
+        root: "uib-datepicker",
         day: "uib-day text-center",
+        weekday: "text-center",
+        month_grid: "uib-daypicker",
       }}
       components={{
         DayButton: CustomDayButton,
