@@ -37,17 +37,24 @@ function CustomMonthCaption({ calendarMonth, ...props }: MonthCaptionProps) {
   const { goToMonth, nextMonth, previousMonth } = useDayPicker();
 
   return (
-    <div {...props}>
+    <div
+      {...props}
+      className={cn("tw:grid tw:grid-cols-8 tw:items-center", props.className)}
+    >
       <button
         type="button"
-        className="btn btn-default btn-sm pull-left uib-left"
+        className="btn btn-default btn-sm uib-left"
         onClick={() => previousMonth && goToMonth(previousMonth)}
         disabled={!previousMonth}
         aria-label="Previous month"
       >
         <i className="glyphicon glyphicon-chevron-left" aria-hidden="true" />
       </button>
-      <button type="button" className="btn btn-default btn-sm uib-title">
+      <button
+        type="button"
+        className="btn btn-default btn-sm uib-title tw:col-span-6"
+        aria-live="assertive"
+      >
         <strong>
           {calendarMonth.date.toLocaleDateString("en-US", {
             month: "long",
@@ -55,10 +62,9 @@ function CustomMonthCaption({ calendarMonth, ...props }: MonthCaptionProps) {
           })}
         </strong>
       </button>
-
       <button
         type="button"
-        className="btn btn-default btn-sm pull-right uib-right"
+        className="btn btn-default btn-sm uib-right"
         onClick={() => nextMonth && goToMonth(nextMonth)}
         disabled={!nextMonth}
         aria-label="Next month"
@@ -71,7 +77,7 @@ function CustomMonthCaption({ calendarMonth, ...props }: MonthCaptionProps) {
 
 export function DatePickerDayView() {
   const [month, setMonth] = React.useState<Date>();
-  const [selected, setSelected] = React.useState<Date>();
+  const [selected, setSelected] = React.useState<Date>(new Date());
 
   return (
     <DayPicker
@@ -90,7 +96,7 @@ export function DatePickerDayView() {
         setMonth(date);
       }}
       classNames={{
-        root: "uib-datepicker",
+        root: "uib-datepicker tw:inline-block",
         day: "uib-day text-center",
         weekday: "text-center",
         month_grid: "uib-daypicker",
