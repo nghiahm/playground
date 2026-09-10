@@ -96,7 +96,7 @@ export function DatePickerDayView() {
         setMonth(date);
       }}
       classNames={{
-        root: "uib-datepicker tw:inline-block",
+        root: "well well-sm uib-datepicker tw:inline-block",
         day: "uib-day text-center",
         weekday: "text-center",
         month_grid: "uib-daypicker",
